@@ -32,6 +32,7 @@ let setServer = (server) => {
 
             userModel.findOne({'userId':userId},(err,result)=>{
                 if(err){
+                    socket.emit('auth-error','User not found')
                 }
                 else if(check.isEmpty(result)){}
                 else{
@@ -97,44 +98,6 @@ let setServer = (server) => {
 
 
 }
-
-
- // end of on disconnect
-
-// database operations are kept outside of socket.io code.
-
-// saving chats to database.
-// eventEmitter.on('save-chat', (data) => {
-
-//     // let today = Date.now();
-
-//     let newChat = new ChatModel({
-
-//         chatId: data.chatId,
-//         senderName: data.senderName,
-//         senderId: data.senderId,
-//         receiverName: data.receiverName || '',
-//         receiverId: data.receiverId || '',
-//         message: data.message,
-//         chatRoom: data.chatRoom || '',
-//         createdOn: data.createdOn
-
-//     });
-
-//     newChat.save((err,result) => {
-//         if(err){
-//             console.log(`error occurred: ${err}`);
-//         }
-//         else if(result == undefined || result == null || result == ""){
-//             console.log("Chat Is Not Saved.");
-//         }
-//         else {
-//             console.log("Chat Saved.");
-//             console.log(result);
-//         }
-//     });
-
-// }); // end of saving chat.
 
 module.exports = {
     setServer: setServer,

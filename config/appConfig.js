@@ -6,7 +6,7 @@ appConfig.env = "dev";
 appConfig.db = {
     uri: 'mongodb://127.0.0.1:27017/cataloguerDB'
   }
-appConfig.apiVersion = '/api/v1';
+appConfig.apiVersion = '/v1';
 
 
 module.exports = {

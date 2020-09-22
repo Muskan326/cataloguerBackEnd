@@ -9,14 +9,14 @@ const pager=require('./../middlewares/paginate')
 
 module.exports.setRouter = (app) => {
 
-    let baseUrl = `${appConfig.apiVersion}/cataloguer`;
+    let baseUrl = `${appConfig.apiVersion}`;
   
     app.use(pretty());
     app.post(`${baseUrl}/login`,userController.login);
         /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/login API for user login.
+     * @api {post} /v1/login API for user login.
      *
      * @apiParam {string} email email of the user. (body params) (required)
      * @apiParam {string} password password of the user. (body params) (required)
@@ -58,7 +58,7 @@ module.exports.setRouter = (app) => {
       /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/signup API for user signup.
+     * @api {post} /v1/signup API for user signup.
      *
      * @apiParam {string} email email of the user. (body params) (required)
      * @apiParam {string} firstName firstName of the user. (body params) (required)
@@ -104,7 +104,7 @@ module.exports.setRouter = (app) => {
           /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/get/:userId API for getting info of a user using his userId.
+     * @api {get} /v1/get/:userId API for getting info of a user using his userId.
      *
      * @apiParam {string} userId userId of the user for which you want to find the details. (route params) (required)
      *
@@ -142,7 +142,7 @@ module.exports.setRouter = (app) => {
               /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/logout/:userId API for logging out a user.
+     * @api {get} /v1/logout/:userId API for logging out a user.
      *
      * @apiParam {string} userId userId of the user who wants to logout. (body params) (required)
      *
@@ -169,7 +169,7 @@ module.exports.setRouter = (app) => {
     /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/details/:email  API for getting info of a user with his email.
+     * @api {get} /v1/details/:email  API for getting info of a user with his email.
      *
      * @apiParam {string} email emailId to check for existance of a user (route params) (required)
      *
@@ -206,7 +206,7 @@ module.exports.setRouter = (app) => {
         /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/allUsers?page&limit API for getting info of all the users on the portal.
+     * @api {get} /v1/allUsers?page&limit API for getting info of all the users on the portal.
      *
      * @apiParam {Number} page page number to fetch data. (query params ) (optional)
      * @apiParam {Number} limit limit of data for each page. (query params ) (optional)
@@ -244,7 +244,7 @@ module.exports.setRouter = (app) => {
     /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/resetPassword API for resetting a password by email.
+     * @api {post} /v1/resetPassword API for resetting a password by email.
      *
      * @apiParam {string} email emailId for which the password has to be changed  (body params) (required)
      *
@@ -270,7 +270,7 @@ module.exports.setRouter = (app) => {
      /**
      * @apiGroup mails
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/changePassword/:email API to send mail requesting to change password.
+     * @api {get} /v1/changePassword/:email API to send mail requesting to change password.
      *
      * @apiParam {string} email emailId for which the password has to be changed  (route params) (required)
      *
@@ -296,7 +296,7 @@ module.exports.setRouter = (app) => {
          /**
      * @apiGroup mails
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/verifyEmail/:email API for verifying email at the time of signup.
+     * @api {get} /v1/verifyEmail/:email API for verifying email at the time of signup.
      *
      * @apiParam {string} email emailId for verification  (route params) (required)
      *
@@ -322,7 +322,7 @@ module.exports.setRouter = (app) => {
              /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/allTasks?page&limit API to fetch all Headtasks in the portal.
+     * @api {get} /v1/allTasks?page&limit API to fetch all Headtasks in the portal.
      *
      * @apiParam {Number} page page number to fetch data. (query params ) (optional)
      * @apiParam {Number} limit limit of data for each page. (query params ) (optional)
@@ -362,7 +362,7 @@ module.exports.setRouter = (app) => {
                  /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/create API to create a new HeadTask.
+     * @api {post} /v1/create API to create a new HeadTask.
      *
      * @apiParam {string} title title of the head task (body param) (required)
      * @apiParam {string} description description of the head task (body params ) (optional)
@@ -403,7 +403,7 @@ module.exports.setRouter = (app) => {
                      /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/subTask API to create a sub task.
+     * @api {post} /v1/subTask API to create a sub task.
      *
      * @apiParam {string} title title of the sub task (body param) (required)
      * @apiParam {string} description description of the sub task (body params ) (optional)
@@ -449,7 +449,7 @@ module.exports.setRouter = (app) => {
     /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/all  API to get all the ancestor tasks of a task.
+     * @api {post} /v1/all  API to get all the ancestor tasks of a task.
      *
      * @apiParam {string} taskId taskId to find the parent tasks. (body params ) (required)
      *
@@ -475,7 +475,7 @@ module.exports.setRouter = (app) => {
       /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/delete API to delete a task using the taskId.
+     * @api {post} /v1/delete API to delete a task using the taskId.
      * 
      * @apiParam {string} userId userId of the user who is deleting the task. (body params ) (required)
      * @apiParam {string} taskId taskId to be deleted . (body params ) (required)
@@ -502,7 +502,7 @@ module.exports.setRouter = (app) => {
       /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/getRelated/:userId?page&limit API for getting all the tasks related to a user.
+     * @api {get} /v1/getRelated/:userId?page&limit API for getting all the tasks related to a user.
      *
      * @apiParam {string} userId userId for which we want related tasks. (route params) (required)
      * @apiParam {Number} page page number to fetch data. (query params ) (optional)
@@ -541,7 +541,7 @@ module.exports.setRouter = (app) => {
        /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/editTask API to edit a task .
+     * @api {post} /v1/editTask API to edit a task .
      *
      * @apiParam {string} taskId taskId of the task to fetch details (body param ) (required)
      * @apiParam {string} title title of the  task (body param) (required)
@@ -584,7 +584,7 @@ module.exports.setRouter = (app) => {
            /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/taskDetails/:taskId API to get details of a task using task Id.
+     * @api {get} /v1/taskDetails/:taskId API to get details of a task using task Id.
      *
      * @apiParam {string} taskId taskId of the task to fetch details (route param ) (required)
      *
@@ -623,7 +623,7 @@ module.exports.setRouter = (app) => {
       /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/sendRequest API to send friend request to another user.
+     * @api {post} /v1/sendRequest API to send friend request to another user.
      *
      * @apiParam {string} sender userId of the sender (body param ) (required)
      * @apiParam {string} senderName username of the sender. (body params ) (required)
@@ -651,7 +651,7 @@ module.exports.setRouter = (app) => {
           /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/removeRequest API to remove send friend request from a user.
+     * @api {post} /v1/removeRequest API to remove send friend request from a user.
      *
      * @apiParam {string} sender userId of the sender (body param ) (required)
      * @apiParam {string} receiver userId of the receiver. (body params ) (required)
@@ -678,7 +678,7 @@ module.exports.setRouter = (app) => {
      /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/acceptRequest API to accept a friend request from another user.
+     * @api {post} /v1/acceptRequest API to accept a friend request from another user.
      *
      * @apiParam {string} sender userId of the sender (body param ) (required)
      * @apiParam {string} senderName Full name of the sender (body param ) (required)
@@ -707,7 +707,7 @@ module.exports.setRouter = (app) => {
          /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/unfriend API to unfriend a user.
+     * @api {post} /v1/unfriend API to unfriend a user.
      *
      * @apiParam {string} sender userId of the sender (body param ) (required)
      * @apiParam {string} receiver userId of the receiver. (body params ) (required)
@@ -734,7 +734,7 @@ module.exports.setRouter = (app) => {
              /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {get} /api/v1/cataloguer/getMySendRequests/:userId API to get list of all friend requests send by the user.
+     * @api {get} /v1/getMySendRequests/:userId API to get list of all friend requests send by the user.
      *
      * @apiParam {string} userId userId of the sender (route param ) (required)
      *
@@ -771,7 +771,7 @@ module.exports.setRouter = (app) => {
                  /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {post} /api/v1/cataloguer/undo API to undo last action on the headtask.
+     * @api {post} /v1/undo API to undo last action on the headtask.
      *
      * @apiParam {string} taskId taskid of the head task to undo last action (body param ) (required)
      * @apiParam {string} userId userId of the user undoing the task (body param ) (required)

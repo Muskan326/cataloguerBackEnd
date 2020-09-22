@@ -3,7 +3,7 @@ define({ "api": [
     "group": "mails",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/changePassword/:email",
+    "url": "/v1/changePassword/:email",
     "title": "API to send mail requesting to change password.",
     "parameter": {
       "fields": {
@@ -38,13 +38,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "mails",
-    "name": "GetApiV1CataloguerChangepasswordEmail"
+    "name": "GetV1ChangepasswordEmail"
   },
   {
     "group": "mails",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/verifyEmail/:email",
+    "url": "/v1/verifyEmail/:email",
     "title": "API for verifying email at the time of signup.",
     "parameter": {
       "fields": {
@@ -79,13 +79,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "mails",
-    "name": "GetApiV1CataloguerVerifyemailEmail"
+    "name": "GetV1VerifyemailEmail"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/allTasks?page&limit",
+    "url": "/v1/allTasks?page&limit",
     "title": "API to fetch all Headtasks in the portal.",
     "parameter": {
       "fields": {
@@ -127,13 +127,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "GetApiV1CataloguerAlltasksPageLimit"
+    "name": "GetV1AlltasksPageLimit"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/getRelated/:userId?page&limit",
+    "url": "/v1/getRelated/:userId?page&limit",
     "title": "API for getting all the tasks related to a user.",
     "parameter": {
       "fields": {
@@ -182,13 +182,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "GetApiV1CataloguerGetrelatedUseridPageLimit"
+    "name": "GetV1GetrelatedUseridPageLimit"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/taskDetails/:taskId",
+    "url": "/v1/taskDetails/:taskId",
     "title": "API to get details of a task using task Id.",
     "parameter": {
       "fields": {
@@ -223,13 +223,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "GetApiV1CataloguerTaskdetailsTaskid"
+    "name": "GetV1TaskdetailsTaskid"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/all",
+    "url": "/v1/all",
     "title": "API to get all the ancestor tasks of a task.",
     "parameter": {
       "fields": {
@@ -264,13 +264,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "PostApiV1CataloguerAll"
+    "name": "PostV1All"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/create",
+    "url": "/v1/create",
     "title": "API to create a new HeadTask.",
     "parameter": {
       "fields": {
@@ -319,13 +319,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "PostApiV1CataloguerCreate"
+    "name": "PostV1Create"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/delete",
+    "url": "/v1/delete",
     "title": "API to delete a task using the taskId.",
     "parameter": {
       "fields": {
@@ -367,13 +367,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "PostApiV1CataloguerDelete"
+    "name": "PostV1Delete"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/editTask",
+    "url": "/v1/editTask",
     "title": "API to edit a task .",
     "parameter": {
       "fields": {
@@ -436,13 +436,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "PostApiV1CataloguerEdittask"
+    "name": "PostV1Edittask"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/subTask",
+    "url": "/v1/subTask",
     "title": "API to create a sub task.",
     "parameter": {
       "fields": {
@@ -519,13 +519,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "PostApiV1CataloguerSubtask"
+    "name": "PostV1Subtask"
   },
   {
     "group": "task",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/undo",
+    "url": "/v1/undo",
     "title": "API to undo last action on the headtask.",
     "parameter": {
       "fields": {
@@ -574,13 +574,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "task",
-    "name": "PostApiV1CataloguerUndo"
+    "name": "PostV1Undo"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/allUsers?page&limit",
+    "url": "/v1/allUsers?page&limit",
     "title": "API for getting info of all the users on the portal.",
     "parameter": {
       "fields": {
@@ -622,13 +622,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "GetApiV1CataloguerAllusersPageLimit"
+    "name": "GetV1AllusersPageLimit"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/details/:email",
+    "url": "/v1/details/:email",
     "title": "API for getting info of a user with his email.",
     "parameter": {
       "fields": {
@@ -663,13 +663,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "GetApiV1CataloguerDetailsEmail"
+    "name": "GetV1DetailsEmail"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/get/:userId",
+    "url": "/v1/get/:userId",
     "title": "API for getting info of a user using his userId.",
     "parameter": {
       "fields": {
@@ -704,13 +704,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "GetApiV1CataloguerGetUserid"
+    "name": "GetV1GetUserid"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/getMySendRequests/:userId",
+    "url": "/v1/getMySendRequests/:userId",
     "title": "API to get list of all friend requests send by the user.",
     "parameter": {
       "fields": {
@@ -745,13 +745,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "GetApiV1CataloguerGetmysendrequestsUserid"
+    "name": "GetV1GetmysendrequestsUserid"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "get",
-    "url": "/api/v1/cataloguer/logout/:userId",
+    "url": "/v1/logout/:userId",
     "title": "API for logging out a user.",
     "parameter": {
       "fields": {
@@ -786,13 +786,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "GetApiV1CataloguerLogoutUserid"
+    "name": "GetV1LogoutUserid"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/acceptRequest",
+    "url": "/v1/acceptRequest",
     "title": "API to accept a friend request from another user.",
     "parameter": {
       "fields": {
@@ -848,13 +848,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerAcceptrequest"
+    "name": "PostV1Acceptrequest"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/login",
+    "url": "/v1/login",
     "title": "API for user login.",
     "parameter": {
       "fields": {
@@ -896,13 +896,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerLogin"
+    "name": "PostV1Login"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/removeRequest",
+    "url": "/v1/removeRequest",
     "title": "API to remove send friend request from a user.",
     "parameter": {
       "fields": {
@@ -944,13 +944,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerRemoverequest"
+    "name": "PostV1Removerequest"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/resetPassword",
+    "url": "/v1/resetPassword",
     "title": "API for resetting a password by email.",
     "parameter": {
       "fields": {
@@ -985,13 +985,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerResetpassword"
+    "name": "PostV1Resetpassword"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/sendRequest",
+    "url": "/v1/sendRequest",
     "title": "API to send friend request to another user.",
     "parameter": {
       "fields": {
@@ -1040,13 +1040,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerSendrequest"
+    "name": "PostV1Sendrequest"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/signup",
+    "url": "/v1/signup",
     "title": "API for user signup.",
     "parameter": {
       "fields": {
@@ -1130,13 +1130,13 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerSignup"
+    "name": "PostV1Signup"
   },
   {
     "group": "user",
     "version": "1.0.0",
     "type": "post",
-    "url": "/api/v1/cataloguer/unfriend",
+    "url": "/v1/unfriend",
     "title": "API to unfriend a user.",
     "parameter": {
       "fields": {
@@ -1178,6 +1178,6 @@ define({ "api": [
     },
     "filename": "app/routes/user.js",
     "groupTitle": "user",
-    "name": "PostApiV1CataloguerUnfriend"
+    "name": "PostV1Unfriend"
   }
 ] });
