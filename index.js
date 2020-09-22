@@ -13,12 +13,9 @@ const globalErrorMiddleware = require('./app/middlewares/appErrorHandler')
 const app = express()
 var cors = require('cors')
 
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-    next();
-});
+
+app.use(cors());
+
 
 //middlewares
 app.use(bodyParser.json())
