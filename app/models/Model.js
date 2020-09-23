@@ -127,7 +127,27 @@ let eventSchema=new Schema({
 })
 
 
+let notificationSchema=new Schema({
+  notifyId:{
+    type:String,
+    required:true
+  },
+  userId:{
+    type:String,
+    required:true
+  },
+  path:{
+    type:String,
+    required:true
+  },
+  actionString:{
+    type:String,
+    required:true
+  }
+})
+
 mongoose.model('User', userSchema);
 mongoose.model('Auth', authSchema);
 mongoose.model('Task',taskSchema);
-mongoose.model('Event',eventSchema)
+mongoose.model('Event',eventSchema);
+mongoose.model('Notification',notificationSchema)

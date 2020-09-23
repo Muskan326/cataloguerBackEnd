@@ -2,6 +2,7 @@ const express = require('express');
 const userController = require("./../../app/controllers/userController");
 const mailController = require("./../../app/controllers/mailController");
 const taskController = require("./../../app/controllers/taskController");
+const notifyController= require('./../../app/controllers/notifyController')
 const appConfig = require("./../../config/appConfig")
 const checking = require("./../middlewares/checkuser")
 const pretty = require('express-prettify');
@@ -802,5 +803,95 @@ module.exports.setRouter = (app) => {
 	    "data":null
 	   }
 	 */
+
+
+   app.get(`${baseUrl}/getNotification/:userId`,notifyController.fetchNotifications)
+
+    /**
+     * @apiGroup notification
+     * @apiVersion  1.0.0
+     * @api {get} /v1/getNotification/:userId API to undo last action on the headtask.
+     *
+     * @apiParam {string} userId userId of the user whose notifications are to be fetched (route param ) (required)
+     *
+     * 
+     * @apiSuccessExample {json} Success-Response:
+         {
+            "error": false,
+            "status": 200,
+            "message": "All Notifications",
+            "data":[
+              {
+                "notifyId":"String",
+                "userId":"String",
+                "actionString":"String",
+                "path":"String"
+              }
+            ]
+    
+         @apiErrorExample {json} Error-Response:
+	 *
+	 * {
+        "error": true,
+        "status": 500,
+	    "message": "database error while fetching Notification ",
+	    "data":null
+	   }
+	 */
+
+   app.get(`${baseUrl}/markAsRead/:userId`,notifyController.markAllRead)
+
+      /**
+     * @apiGroup notification
+     * @apiVersion  1.0.0
+     * @api {get} /v1/markAsRead/:userId API to undo last action on the headtask.
+     *
+     * @apiParam {string} userId userId of the user whose all notifications are to be marked as read (route param ) (required)
+     *
+     * 
+     * @apiSuccessExample {json} Success-Response:
+         {
+            "error": false,
+            "status": 200,
+            "message": "All Notifications Removed",
+            "data":null
+    
+         @apiErrorExample {json} Error-Response:
+	 *
+	 * {
+        "error": true,
+        "status": 500,
+	    "message": "database error while reading Notification ",
+	    "data":null
+	   }
+	 */
+
+   app.get(`${baseUrl}/markOneRead/:notifyId`,notifyController.markOneRead)
+
+         /**
+     * @apiGroup notification
+     * @apiVersion  1.0.0
+     * @api {get} /v1/markOneRead/:userId API to undo last action on the headtask.
+     *
+     * @apiParam {string} notifyId notifyId to be marked as read (route param ) (required)
+     *
+     * 
+     * @apiSuccessExample {json} Success-Response:
+         {
+            "error": false,
+            "status": 200,
+            "message": " Notification Removed",
+            "data":null
+    
+         @apiErrorExample {json} Error-Response:
+	 *
+	 * {
+        "error": true,
+        "status": 500,
+	    "message": "database error while reading Notification ",
+	    "data":null
+	   }
+	 */
+
 
 }

@@ -165,6 +165,7 @@ let signup = (req, res) => {
                     res.send(apiresponse)
                 }
                 else {
+                    
                     delete result1.password
                      let apiresponse = response.generate(false, 200, 'User Registered Successfully', result1)
                     res.send(apiresponse)

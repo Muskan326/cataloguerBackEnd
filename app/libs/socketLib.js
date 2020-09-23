@@ -12,6 +12,8 @@ const check = require("./checkLib.js");
 const response = require('./responseLib');
 const { count } = require('console');
 
+const notify= require('../controllers/notifyController')
+
 const userModel = mongoose.model('User')
 
 let setServer = (server) => {
@@ -65,9 +67,22 @@ let setServer = (server) => {
             for(let each of data.viewers){
                 socket.to(socket.room).broadcast.emit(each,data); 
             }
-            
+            notify.saveNotification(data)
             console.log('sending update')
         })// end of listening set-user event
+
+
+
+        socket.on("request",(data)=>{
+            for(let each of data.receiver){
+                console.log(each)
+                notify.saveNotification(data)
+                socket.to(socket.room).broadcast.emit(`${each.userId}`,data);
+                console.log("Emitted "+each.userId)
+            }
+            
+        })
+
 
 
         socket.on('disconnect', () => {
@@ -83,14 +98,7 @@ let setServer = (server) => {
         })
 
 
-        socket.on("request",(data)=>{
-            for(let each of data.receiver){
-                console.log(each)
-                socket.to(socket.room).broadcast.emit(`${each.userId}`,data);
-                console.log("Emitted "+each.userId)
-            }
-            
-        })
+        
 
     }
     )

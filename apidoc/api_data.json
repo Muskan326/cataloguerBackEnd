@@ -82,6 +82,129 @@
     "name": "GetV1VerifyemailEmail"
   },
   {
+    "group": "notification",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/v1/getNotification/:userId",
+    "title": "API to undo last action on the headtask.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of the user whose notifications are to be fetched (route param ) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"error\": false,\n   \"status\": 200,\n   \"message\": \"All Notifications\",\n   \"data\":[\n     {\n       \"notifyId\":\"String\",\n       \"userId\":\"String\",\n       \"actionString\":\"String\",\n       \"path\":\"String\"\n     }\n   ]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n        \"error\": true,\n        \"status\": 500,\n\t    \"message\": \"database error while fetching Notification \",\n\t    \"data\":null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "notification",
+    "name": "GetV1GetnotificationUserid"
+  },
+  {
+    "group": "notification",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/v1/markAsRead/:userId",
+    "title": "API to undo last action on the headtask.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>userId of the user whose all notifications are to be marked as read (route param ) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"error\": false,\n   \"status\": 200,\n   \"message\": \"All Notifications Removed\",\n   \"data\":null",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n        \"error\": true,\n        \"status\": 500,\n\t    \"message\": \"database error while reading Notification \",\n\t    \"data\":null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "notification",
+    "name": "GetV1MarkasreadUserid"
+  },
+  {
+    "group": "notification",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/v1/markOneRead/:userId",
+    "title": "API to undo last action on the headtask.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "notifyId",
+            "description": "<p>notifyId to be marked as read (route param ) (required)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"error\": false,\n   \"status\": 200,\n   \"message\": \" Notification Removed\",\n   \"data\":null",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n        \"error\": true,\n        \"status\": 500,\n\t    \"message\": \"database error while reading Notification \",\n\t    \"data\":null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "notification",
+    "name": "GetV1MarkonereadUserid"
+  },
+  {
     "group": "task",
     "version": "1.0.0",
     "type": "get",
