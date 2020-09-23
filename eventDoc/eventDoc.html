@@ -164,14 +164,12 @@
             it as follows:</p>
           <pre>
             {
-                notifyId: 'unique notify id',
-                message: 'you message',
-                createdOn: date, 
-                receiverId: 'userId of receiver',
-                receiverName: full name of receiver,
-                senderId: 'userId of sender',
-                senderName: 'full name of sender'
-            }
+              receiver:'array of objects containing information of the receiver as 
+                        { userId: usersId of receiver ,
+                          userName: userName of receiver }',
+              actionString:'A string to be displayed on front end stating 
+                            what action is taken on the request'
+          }
         </pre>
           <br>
         </div>

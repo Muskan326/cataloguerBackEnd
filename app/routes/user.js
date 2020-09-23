@@ -22,7 +22,7 @@ module.exports.setRouter = (app) => {
     app.use(pretty());
     app.post(`${baseUrl}/login`,userController.login);
         /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/login API for user login.
      *
@@ -64,7 +64,7 @@ module.exports.setRouter = (app) => {
     */
     app.post(`${baseUrl}/signup`, userController.signup);
       /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/signup API for user signup.
      *
@@ -110,7 +110,7 @@ module.exports.setRouter = (app) => {
     
     app.get(`${baseUrl}/get/:userId`,userController.getUserDetails);
           /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {get} /v1/get/:userId API for getting info of a user using his userId.
      *
@@ -148,7 +148,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/logout/:userId`,userController.logout);
               /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {get} /v1/logout/:userId API for logging out a user.
      *
@@ -175,7 +175,7 @@ module.exports.setRouter = (app) => {
 
     app.get(`${baseUrl}/details/:email`,userController.getUserByEmail);
     /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {get} /v1/details/:email  API for getting info of a user with his email.
      *
@@ -212,7 +212,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/allUsers`,pager.paginate,userController.getAllUsers)
         /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {get} /v1/allUsers?page&limit API for getting info of all the users on the portal.
      *
@@ -250,7 +250,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/resetPassword`,userController.resetPassword)
     /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/resetPassword API for resetting a password by email after account recovery.
      *
@@ -277,7 +277,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/changePassword/:email`,mailController.changePasswordMail);
      /**
-     * @apiGroup mails
+     * @apiGroup 3. Mails
      * @apiVersion  1.0.0
      * @api {get} /v1/changePassword/:email API to send mail with a new password.
      *
@@ -303,7 +303,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/verifyEmail/:email`,mailController.verifyEmail);
          /**
-     * @apiGroup mails
+     * @apiGroup 3. Mails
      * @apiVersion  1.0.0
      * @api {get} /v1/verifyEmail/:email API for verifying email at the time of signup.
      *
@@ -329,7 +329,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/allHeadTasks`,pager.paginate,taskController.getHeadTasks)
              /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {get} /v1/allHeadTasks?page&limit API to fetch all Headtasks in the portal.
      *
@@ -370,7 +370,7 @@ module.exports.setRouter = (app) => {
 
   app.get(`${baseUrl}/allTasks`,pager.paginate,taskController.getAllTask)
   /**
-* @apiGroup task
+* @apiGroup 2. Task
 * @apiVersion  1.0.0
 * @api {get} /v1/allTasks?page&limit API to fetch all tasks in the portal.
 *
@@ -412,7 +412,7 @@ module.exports.setRouter = (app) => {
 
     app.post(`${baseUrl}/create`,checking.checkUser,taskController.createNewTask);
                  /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {post} /v1/create API to create a new HeadTask.
      *
@@ -453,7 +453,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/subTask`,checking.isAuthorised,checking.checkUser,taskController.createSubTask);
                      /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {post} /v1/subTask API to create a sub task.
      *
@@ -499,7 +499,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/getAllParents`,taskController.getAllParents)
     /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {post} /v1/all  API to get all the ancestor tasks of a task.
      *
@@ -525,7 +525,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/delete`,checking.isAuthorised,taskController.deleteTask);
       /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {post} /v1/delete API to delete a task using the taskId.
      * 
@@ -552,7 +552,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/getRelated/:userId`,pager.paginate,taskController.getRelatedTask)
       /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {get} /v1/getRelated/:userId?page&limit API for getting all the tasks related to a user.
      *
@@ -591,7 +591,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/editTask`,checking.isAuthorised,taskController.editTask)
        /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {post} /v1/editTask API to edit a task .
      *
@@ -634,7 +634,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/taskDetails/:taskId`,taskController.getTaskDetail)
            /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {get} /v1/taskDetails/:taskId API to get details of a task using task Id.
      *
@@ -673,7 +673,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/sendRequest`,userController.sendRequest)
       /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/sendRequest API to send friend request to another user.
      *
@@ -701,7 +701,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/removeRequest`,userController.removeRequest)
           /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/removeRequest API to remove send friend request from a user.
      *
@@ -728,7 +728,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/acceptRequest`,userController.acceptRequest)
      /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/acceptRequest API to accept a friend request from another user.
      *
@@ -757,7 +757,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/unfriend`,userController.unfriend)
          /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {post} /v1/unfriend API to unfriend a user.
      *
@@ -784,7 +784,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.get(`${baseUrl}/getMySendRequests/:userId`,userController.getMySendRequests)
              /**
-     * @apiGroup user
+     * @apiGroup 1. User
      * @apiVersion  1.0.0
      * @api {get} /v1/getMySendRequests/:userId API to get list of all friend requests send by the user.
      *
@@ -821,7 +821,7 @@ module.exports.setRouter = (app) => {
 	 */
     app.post(`${baseUrl}/undo`,checking.isAuthorised,taskController.undo)
                  /**
-     * @apiGroup task
+     * @apiGroup 2. Task
      * @apiVersion  1.0.0
      * @api {post} /v1/undo API to undo last action on the headtask.
      *
@@ -852,7 +852,7 @@ module.exports.setRouter = (app) => {
    app.get(`${baseUrl}/getNotification/:userId`,notifyController.fetchNotifications)
 
     /**
-     * @apiGroup notification
+     * @apiGroup 4. Notification
      * @apiVersion  1.0.0
      * @api {get} /v1/getNotification/:userId API to get all notifications for a user.
      *
@@ -886,7 +886,7 @@ module.exports.setRouter = (app) => {
    app.get(`${baseUrl}/markAsRead/:userId`,notifyController.markAllRead)
 
       /**
-     * @apiGroup notification
+     * @apiGroup 4. Notification
      * @apiVersion  1.0.0
      * @api {get} /v1/markAsRead/:userId API to mark all notification as Read for a user.
      *
@@ -913,7 +913,7 @@ module.exports.setRouter = (app) => {
    app.get(`${baseUrl}/markOneRead/:notifyId`,notifyController.markOneRead)
 
          /**
-     * @apiGroup notification
+     * @apiGroup 4. Notification
      * @apiVersion  1.0.0
      * @api {get} /v1/markOneRead/:userId API to mark one notification as Read.
      *
