@@ -410,10 +410,28 @@ let takeBackUpAndSave=(action,headTask)=>{
 }
 
 
+let getAllTask=(req,res)=>{
+    taskModel.find({ 'viewers': { $ne: [] } },(err,result)=>{
+        if(err){
+            let apiresponse = response.generate(true, 500, 'Database Error While feting Info', null)
+            res.send(apiresponse)
+        }
+        else{
+            start=(req.query.page-1)*req.query.limit
+                if(req.query.limit==0){ end=result.length }
+                else{ end=start+req.query.limit }
+                result=result.slice(start,end) 
+            let apiresponse = response.generate(true, 200, 'All Tasks in database', result)
+            res.send(apiresponse) 
+        } 
+    })
+}
+
 
 module.exports={
     createNewTask:createNewTask,
     getTaskDetail:getTaskDetail,
+    getAllTask:getAllTask,
     createSubTask:createSubTask,
     deleteTask:deleteTask,
     getRelatedTask:getRelatedTask,

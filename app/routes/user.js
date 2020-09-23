@@ -252,10 +252,11 @@ module.exports.setRouter = (app) => {
     /**
      * @apiGroup user
      * @apiVersion  1.0.0
-     * @api {post} /v1/resetPassword API for resetting a password by email.
+     * @api {post} /v1/resetPassword API for resetting a password by email after account recovery.
      *
-     * @apiParam {string} email emailId for which the password has to be changed  (body params) (required)
-     *
+     * @apiParam {string} email email Id for which the password has to be changed  (body params) (required)
+     * @apiParam {string} oldPassword oldpassword set by system   (body params) (required)
+     * @apiParam {string} newPassword new password of the user (body params) (required)
 
      * 
      * @apiSuccessExample {json} Success-Response:
@@ -278,7 +279,7 @@ module.exports.setRouter = (app) => {
      /**
      * @apiGroup mails
      * @apiVersion  1.0.0
-     * @api {get} /v1/changePassword/:email API to send mail requesting to change password.
+     * @api {get} /v1/changePassword/:email API to send mail with a new password.
      *
      * @apiParam {string} email emailId for which the password has to be changed  (route params) (required)
      *
@@ -326,11 +327,11 @@ module.exports.setRouter = (app) => {
 	    "data":null
 	   }
 	 */
-    app.get(`${baseUrl}/allTasks`,pager.paginate,taskController.getHeadTasks)
+    app.get(`${baseUrl}/allHeadTasks`,pager.paginate,taskController.getHeadTasks)
              /**
      * @apiGroup task
      * @apiVersion  1.0.0
-     * @api {get} /v1/allTasks?page&limit API to fetch all Headtasks in the portal.
+     * @api {get} /v1/allHeadTasks?page&limit API to fetch all Headtasks in the portal.
      *
      * @apiParam {Number} page page number to fetch data. (query params ) (optional)
      * @apiParam {Number} limit limit of data for each page. (query params ) (optional)
@@ -366,6 +367,49 @@ module.exports.setRouter = (app) => {
 	    "data":null
 	   }
 	 */
+
+  app.get(`${baseUrl}/allTasks`,pager.paginate,taskController.getAllTask)
+  /**
+* @apiGroup task
+* @apiVersion  1.0.0
+* @api {get} /v1/allTasks?page&limit API to fetch all tasks in the portal.
+*
+* @apiParam {Number} page page number to fetch data. (query params ) (optional)
+* @apiParam {Number} limit limit of data for each page. (query params ) (optional)
+*
+
+* 
+* @apiSuccessExample {json} Success-Response:
+{
+ "error": false,
+ "status": 200,
+ "message": " All Tasks in database",
+ "data":[{
+     "taskId":"String",
+     "title":"String",
+     "description":"String",
+     "status":"String",
+     "headTask":"String",
+     "parents":"Array",
+     "subTask":"Array",
+     "viewers":"Array",
+     "createdOn":"Date",
+     "createdBy":"Object",
+     "lastModified":"Object"
+
+ }]
+
+@apiErrorExample {json} Error-Response:
+*
+* {
+"error": true,
+"status": 500,
+"message": "Database Error While fetching the info",
+"data":null
+}
+*/
+
+
     app.post(`${baseUrl}/create`,checking.checkUser,taskController.createNewTask);
                  /**
      * @apiGroup task
@@ -810,7 +854,7 @@ module.exports.setRouter = (app) => {
     /**
      * @apiGroup notification
      * @apiVersion  1.0.0
-     * @api {get} /v1/getNotification/:userId API to undo last action on the headtask.
+     * @api {get} /v1/getNotification/:userId API to get all notifications for a user.
      *
      * @apiParam {string} userId userId of the user whose notifications are to be fetched (route param ) (required)
      *
@@ -844,7 +888,7 @@ module.exports.setRouter = (app) => {
       /**
      * @apiGroup notification
      * @apiVersion  1.0.0
-     * @api {get} /v1/markAsRead/:userId API to undo last action on the headtask.
+     * @api {get} /v1/markAsRead/:userId API to mark all notification as Read for a user.
      *
      * @apiParam {string} userId userId of the user whose all notifications are to be marked as read (route param ) (required)
      *
@@ -871,7 +915,7 @@ module.exports.setRouter = (app) => {
          /**
      * @apiGroup notification
      * @apiVersion  1.0.0
-     * @api {get} /v1/markOneRead/:userId API to undo last action on the headtask.
+     * @api {get} /v1/markOneRead/:userId API to mark one notification as Read.
      *
      * @apiParam {string} notifyId notifyId to be marked as read (route param ) (required)
      *

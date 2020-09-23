@@ -4,7 +4,7 @@ define({ "api": [
     "version": "1.0.0",
     "type": "get",
     "url": "/v1/changePassword/:email",
-    "title": "API to send mail requesting to change password.",
+    "title": "API to send mail with a new password.",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -86,7 +86,7 @@ define({ "api": [
     "version": "1.0.0",
     "type": "get",
     "url": "/v1/getNotification/:userId",
-    "title": "API to undo last action on the headtask.",
+    "title": "API to get all notifications for a user.",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -127,7 +127,7 @@ define({ "api": [
     "version": "1.0.0",
     "type": "get",
     "url": "/v1/markAsRead/:userId",
-    "title": "API to undo last action on the headtask.",
+    "title": "API to mark all notification as Read for a user.",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -168,7 +168,7 @@ define({ "api": [
     "version": "1.0.0",
     "type": "get",
     "url": "/v1/markOneRead/:userId",
-    "title": "API to undo last action on the headtask.",
+    "title": "API to mark one notification as Read.",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -208,7 +208,7 @@ define({ "api": [
     "group": "task",
     "version": "1.0.0",
     "type": "get",
-    "url": "/v1/allTasks?page&limit",
+    "url": "/v1/allHeadTasks?page&limit",
     "title": "API to fetch all Headtasks in the portal.",
     "parameter": {
       "fields": {
@@ -244,6 +244,54 @@ define({ "api": [
         {
           "title": "Error-Response:",
           "content": "\n{\n        \"error\": true,\n        \"status\": 500,\n\t    \"message\": \"Database Error While fetching the tasks\",\n\t    \"data\":null\n\t   }",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "app/routes/user.js",
+    "groupTitle": "task",
+    "name": "GetV1AllheadtasksPageLimit"
+  },
+  {
+    "group": "task",
+    "version": "1.0.0",
+    "type": "get",
+    "url": "/v1/allTasks?page&limit",
+    "title": "API to fetch all tasks in the portal.",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>page number to fetch data. (query params ) (optional)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>limit of data for each page. (query params ) (optional)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n \"error\": false,\n \"status\": 200,\n \"message\": \" All Tasks in database\",\n \"data\":[{\n     \"taskId\":\"String\",\n     \"title\":\"String\",\n     \"description\":\"String\",\n     \"status\":\"String\",\n     \"headTask\":\"String\",\n     \"parents\":\"Array\",\n     \"subTask\":\"Array\",\n     \"viewers\":\"Array\",\n     \"createdOn\":\"Date\",\n     \"createdBy\":\"Object\",\n     \"lastModified\":\"Object\"\n\n }]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "\n{\n\"error\": true,\n\"status\": 500,\n\"message\": \"Database Error While fetching the info\",\n\"data\":null\n}",
           "type": "json"
         }
       ]
@@ -1074,7 +1122,7 @@ define({ "api": [
     "version": "1.0.0",
     "type": "post",
     "url": "/v1/resetPassword",
-    "title": "API for resetting a password by email.",
+    "title": "API for resetting a password by email after account recovery.",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1083,7 +1131,21 @@ define({ "api": [
             "type": "string",
             "optional": false,
             "field": "email",
-            "description": "<p>emailId for which the password has to be changed  (body params) (required)</p>"
+            "description": "<p>email Id for which the password has to be changed  (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "oldPassword",
+            "description": "<p>oldpassword set by system   (body params) (required)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "newPassword",
+            "description": "<p>new password of the user (body params) (required)</p>"
           }
         ]
       }
